@@ -1,26 +1,71 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1e2939;
+  --foreground: #f1f5f9;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --card-bg: #232f41;
+  --border: #151c28;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #151c28;
+    --foreground: #f1f5f9;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --card-bg: #1e2939;
+    --border: #232f41;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+a,
+.link {
+  transition: color 0.2s, background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+
+a:hover,
+.link:hover {
+  color: var(--accent-hover);
+}
+
+button,
+.btn {
+  transition: color 0.2s, background 0.2s, border 0.2s, box-shadow 0.2s;
+}
+
+button:hover,
+.btn:hover {
+  filter: brightness(0.95);
+  /* Do not change text color on hover for buttons, only darken background */
+  color: inherit;
+}
+
+button:focus,
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-hover);
+}
+
+:focus {
+  outline: none;
 }
